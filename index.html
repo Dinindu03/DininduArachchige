@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Computer Systems Engineer Portfolio</title>
+    <title>Dinindu Arachchige - Computer Systems Engineer</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -135,12 +135,9 @@
         }
 
         @keyframes float {
-
-            0%,
-            100% {
+            0%, 100% {
                 transform: translateY(0px);
             }
-
             50% {
                 transform: translateY(-20px);
             }
@@ -221,6 +218,7 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
             margin-bottom: 30px;
+            height: 100%;
         }
 
         .project-card:hover {
@@ -285,6 +283,7 @@
             font-size: 1.5rem;
             margin: 0 15px;
             transition: all 0.3s ease;
+            display: inline-block;
         }
 
         .social-links a:hover {
@@ -316,13 +315,69 @@
             color: var(--primary);
             margin-bottom: 1rem;
         }
+
+        .experience-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary);
+        }
+
+        .experience-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .experience-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .experience-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-company {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-date {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .experience-description {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .profile-img {
+                width: 300px;
+                height: 300px;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
     </style>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#"> Dinindu Arachchige</a>
+            <a class="navbar-brand" href="#">Dinindu Arachchige</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -330,6 +385,7 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
                     <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
                     <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
@@ -344,29 +400,23 @@
                 <div class="col-lg-7 hero-content">
                     <h1>Hi, I'm Dinindu Arachchige</h1>
                     <p class="subtitle">Undergraduate Engineering Student & Tech Enthusiast</p>
-                    <p>"Passionate about Networking & cybersecurity, Embedded Systems, Data Science, and System
-                        Engineering."</p>
+                    <p>"Passionate about Networking & Cybersecurity, Embedded Systems, Data Science, and System Engineering."</p>
                     <div>
-                                                    <a href="#projects" class="btn-custom">
-                                <i class="fas fa-rocket"></i> View My Work </a>
-                           
+                        <a href="#projects" class="btn-custom">
+                            <i class="fas fa-rocket"></i> View My Work
+                        </a>
                         <a href="#contact" class="btn-custom">Get In Touch</a>
                     </div>
                     <div class="social-links mt-4">
-                        <a href="https://linkedin.com/in/dinindu-arachchige-3b84902a8"><i
-                                class="fab fa-linkedin"></i></a>
-                        <a href="https://github.com/Dinindu03"><i class="fab fa-github"></i></a>
-                                                <a href="https://instagram.com" > <i class="fab fa-instagram"></i></a>
-                           
-</a>
-
+                        <a href="https://linkedin.com/in/dinindu-arachchige-3b84902a8" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/Dinindu03" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-5 text-center">
-                    <img src="https://github.com/Dinindu03/DininduArachchige/blob/main/Content/WhatsApp%20Image%202025-11-18%20at%2014.23.35_d0a16468.jpg?raw=true" alt="Profile" class="profile-img">
+                   
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -375,108 +425,125 @@
             <h2 class="section-title">About Me</h2>
             <div class="row">
                 <div class="col-lg-8 mx-auto text-center">
-                    <p class="lead mb-4">I am a motivated and dedicated undergraduate in Computer Systems Engineering
-                        with a strong passion for Networking, Data Science, Embedded Systems, and System Engineering. My
-                        passion lies in creating efficient, scalable systems that solve real-world problems.</p>
-                    <p>I continuously strive to expand my technical knowledge and practical skills through academic
-                        projects and personal learning. Known for being honest, hardworking, and adaptable, I am
-                        committed to excellence in everything I undertake. I enjoy problem-solving, collaborating with
-                        teams, and learning new technologies that contribute to innovative solutions. With a growth
-                        mindset and a keen eye for detail, I am eager to contribute effectively to any technical or
-                        research-oriented environment I become part of.</p>
+                    <p class="lead mb-4">I am a motivated and dedicated undergraduate in Computer Systems Engineering with a strong passion for Networking, Data Science, Embedded Systems, and System Engineering. My passion lies in creating efficient, scalable systems that solve real-world problems.</p>
+                    <p>I continuously strive to expand my technical knowledge and practical skills through academic projects and personal learning. Known for being honest, hardworking, and adaptable, I am committed to excellence in everything I undertake. I enjoy problem-solving, collaborating with teams, and learning new technologies that contribute to innovative solutions. With a growth mindset and a keen eye for detail, I am eager to contribute effectively to any technical or research-oriented environment I become part of.</p>
                 </div>
             </div>
-            <!-- education -->
             <div class="row mt-5">
-                <div class="col-md-6">
+                <div class="col-md-6 mx-auto">
                     <div class="timeline-item">
-                        <i class="fas fa-graduation-cap timeline-icon"></i>
-                        <h4>Education</h4>
-                        <h5>Bachelor of Science of Engineering Honours in Computer Systems Engineering</h5>
-                        <p class="text-muted">Faculty of Engineering / Dept. of Electrical, Electronic & Systems
-                            Engineering</p>
-
+                        <i class="fas fa-graduation-cap timeline-icon">>Education</i>
+                        
+                        <h5>Bachelor of Science  Engineering (Honours) in Computer Systems Engineering</h5>
+                        <p class="text-muted mb-2">Faculty of Engineering / Dept. of Electrical, Electronic & Systems Engineering</p>
                         <p class="text-muted">NSBM Green University</p>
-                       
                     </div>
-
                 </div>
-
-                
-
-                </div>
-                
             </div>
         </div>
     </section>
 
-    <section id="skills" class="section">
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="experience-card">
+                        <i class="fas fa-briefcase experience-icon"></i>
+                        <h3 class="experience-title">Network & cybersecurity Engineer - Intern</h3>
+                        <p class="experience-company">Sri Lanka Bureau of Foreign Employment (SLBFE)</p>
+                        <p class="experience-date">September 2025 - January 2026</p>
+                        <p class="experience-description">
+                            Assisted in designing and implementing network infrastructure for enterprise clients. Configured routers, switches, and firewalls. Performed network troubleshooting and optimization. Worked with Cisco equipment and gained hands-on experience with VLANs, routing protocols, and network security implementations.
+                        </p>
+                    </div>
+
+                    <div class="experience-card">
+                        <i class="fas fa-code experience-icon"></i>
+                        <h3 class="experience-title">Software Engineer - Intern</h3>
+                        <p class="experience-company">Sri Lanka Bureau of Foreign Employment (SLBFE) </p>
+                        <p class="experience-date">January 2026 - March 2026</p>
+                        <p class="experience-description">
+                           Developed TeaStack, a robust ASP.NET MVC and C# solution designed to modernize legacy tea production workflows. By migrating from a VB6 environment to an MSSQL and jQuery-based architecture, the system optimizes real-time harvest tracking and inventory management, significantly enhancing operational transparency and data accuracy across the production lifecycle.
+                    </div>
+                    <div class="experience-card">
+                        <i class="fas fa-laptop-code experience-icon"></i>
+                        <h3 class="experience-title">System Engineer - Intern</h3>
+                        <p class="experience-company">Sri Lanka Ports Authority (SLPA)</p>
+
+                        <p class="experience-date">August 2025 - September 2025</p>
+                        <p class="experience-description">
+                           Demonstrated rapid technical adaptability in a high-stakes environment, supporting the troubleshooting and optimization of large-scale server systems and network operations. Committed to ensuring high availability and system reliability in mission-critical industrial settings.
+                        </p>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section bg-light">
         <div class="container">
             <h2 class="section-title">Technical Skills</h2>
             <div class="row">
                 <div class="col-md-4">
                     <div class="skill-card">
+                        <i class="fas fa-network-wired skill-icon"></i>
+                        <h4>Networking & Cybersecurity</h4>
+                        <p>TCP/IP, Network Protocols, Cisco Configuration, Network Security, Firewalls, VPN</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="skill-card">
                         <i class="fas fa-microchip skill-icon"></i>
                         <h4>Embedded Systems</h4>
-                        <p>Arduino, Raspberry Pi, STM32, ARM Cortex, Microcontroller Programming</p>
+                        <p>Arduino, ESP32, Raspberry Pi, STM32, Microcontroller Programming, IoT Integration</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="skill-card">
+                        <i class="fas fa-chart-line skill-icon"></i>
+                        <h4>Data Science</h4>
+                        <p>Python, Data Analysis, Machine Learning, Statistical Modeling, Data Visualization</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="skill-card">
                         <i class="fas fa-code skill-icon"></i>
                         <h4>Programming</h4>
-                        <p>C/C++, Python, Java, Assembly, Verilog, VHDL</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="skill-card">
-                        <i class="fas fa-network-wired skill-icon"></i>
-                        <h4>Networking & Cybersecurity</h4>
-                        <p>TCP/IP, Network Protocols, Router Configuration, Network Security, Wireshark, Splunk SIEM,
-                            Kali Linux</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="skill-card">
-                        <i class="fas fa-laptop-code skill-icon"></i>
-                        <h4>Software System Design</h4>
-                        <p>HTML, CSS, JavaScript, Bootstrap, React, Node.js,MySQL, PostgreSQL, MongoDB, Database Design
-                        </p>
+                        <p>Java, Python, C/C++, JavaScript, SQL, HTML/CSS</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="skill-card">
                         <i class="fas fa-database skill-icon"></i>
-                        <h4>Databases</h4>
-                        <p>MySQL, PostgreSQL, MongoDB, Database Design</p>
+                        <h4>Database Management</h4>
+                        <p>MySQL, Database Design, SQL Queries, Data Modeling</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="skill-card">
                         <i class="fas fa-tools skill-icon"></i>
                         <h4>Tools & Platforms</h4>
-                        <p>Git, Linux, Docker, Arduino IDE, MATLAB, Proteus</p>
+                        <p>Git, Linux, Proteus, MATLAB, VS Code, Cisco Packet Tracer</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Featured Projects -->
-
-    <section id="projects" class="section bg-light">
+    <section id="projects" class="section">
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
             <div class="row">
                 <div class="col-md-4">
                     <div class="project-card">
                         <div class="project-img">
-                            <i class="fas fa-hand-sparkles"></i>
+                            <i class="fas fa-parking"></i>
                         </div>
                         <div class="project-content">
-                            <h4> Smart Car Parking System</h4>
-                            <p>IoT-based Car parking automation system using ESP32 and website integration for
-                                controlling parking slot .</p>
+                            <h4>Smart Car Parking System</h4>
+                            <p>IoT-based car parking automation system using ESP32 and website integration for controlling parking slots.</p>
                             <span class="badge-custom">#IoT</span>
                             <span class="badge-custom">#ESP32</span>
                             <span class="badge-custom">#Simulation</span>
@@ -486,14 +553,12 @@
                 <div class="col-md-4">
                     <div class="project-card">
                         <div class="project-img">
-                            <i class="fas fa-robot"></i>
+                            <i class="fas fa-bolt"></i>
                         </div>
                         <div class="project-content">
-                            <h4>Electronic Project</h4>
-                            <p>where we designed, simulated, and built a two-way regulated power supply. This circuit
-                                efficiently converts a 240V AC input into stable 5V and 3.5V DC outputs, utilizing Zener
-                                diodes for precise voltage regulation</p>
-                            <span class="badge-custom">#CircuitDesign </span>
+                            <h4>Regulated Power Supply</h4>
+                            <p>Designed, simulated, and built a two-way regulated power supply converting 240V AC to stable 5V and 3.5V DC outputs using Zener diodes.</p>
+                            <span class="badge-custom">#CircuitDesign</span>
                             <span class="badge-custom">#ZenerDiode</span>
                             <span class="badge-custom">#PCB</span>
                         </div>
@@ -505,30 +570,19 @@
                             <i class="fas fa-desktop"></i>
                         </div>
                         <div class="project-content">
-                            <h4>Software System</h4>
-                            <p>Designed and implemented a digital health record system using Java Swing and MySQL
-                                database to securely manage patient information. Included features for finding and
-                                managing patient history across multiple medical centers, with access provided to
-                                doctors and nurses for viewing records.</p>
+                            <h4>Digital Health Record System</h4>
+                            <p>Designed and implemented a health record system using Java Swing and MySQL to securely manage patient information across medical centers.</p>
                             <span class="badge-custom">#MySQL</span>
-                            <span class="badge-custom">#java</span>
-                            <span class="badge-custom">#Cloud</span>
+                            <span class="badge-custom">#Java</span>
+                            <span class="badge-custom">#Database</span>
                         </div>
                     </div>
                 </div>
-
-
-
-
             </div>
-        </div>
         </div>
     </section>
 
-
-    <!-- Get In Touch -->
-
-    <section id="contact" class="section">
+    <section id="contact" class="section bg-light">
         <div class="container">
             <h2 class="section-title">Get In Touch</h2>
             <div class="row">
@@ -551,20 +605,18 @@
                     <div class="contact-info text-center">
                         <i class="fas fa-map-marker-alt contact-icon"></i>
                         <h5>Location</h5>
-                        <p>"Prashakthi",Abaduwa ,Goluwamulla ,Ganegoda</p>
+                        <p>"Prashakthi", Abaduwa, Goluwamulla, Ganegoda</p>
                     </div>
                 </div>
             </div>
             <div class="row mt-5">
                 <div class="col-lg-6 mx-auto text-center">
                     <h4 class="mb-4">Let's Connect!</h4>
-                    <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your
-                        vision.</p>
+                    <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
                     <div class="social-links mt-4">
-                        <a href="https://linkedin.com/in/dinindu-arachchige-3b84902a8"><i
-                                class="fab fa-linkedin"></i></a>
-                        <a href="https://github.com/Dinindu03"><i class="fab fa-github"></i></a>
-                        <a href="https://twitter.com"><i class="fab fa-twitter"></i></a>
+                        <a href="https://linkedin.com/in/dinindu-arachchige-3b84902a8" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/Dinindu03" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
@@ -575,7 +627,6 @@
     <footer>
         <div class="container">
             <p>&copy; 2025 Eng. Dinindu Arachchige. All Rights Reserved.</p>
-
         </div>
     </footer>
 
@@ -617,7 +668,7 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.skill-card, .project-card, .timeline-item, .contact-info').forEach(el => {
+        document.querySelectorAll('.skill-card, .project-card, .timeline-item, .contact-info, .experience-card').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'all 0.6s ease';
