@@ -1,705 +1,957 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dinindu Arachchige - Computer Systems Engineer</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #6366f1;
-            --secondary: #8b5cf6;
-            --accent: #ec4899;
-            --dark: #1e293b;
-            --light: #f8fafc;
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dinindu Arachchige — Network &amp; Systems Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#060B17;
+    --bg-soft:#0A1428;
+    --panel:#0D1B33;
+    --panel-2:#11203F;
+    --line:#1C2D4D;
+    --line-soft:#152540;
+    --accent:#38BDF8;
+    --accent-2:#818CF8;
+    --accent-dim:rgba(56,189,248,0.14);
+    --accent-dim-2:rgba(129,140,248,0.14);
+    --text:#EAF2FF;
+    --text-dim:#8DA0C4;
+    --text-faint:#56688C;
+    --radius:14px;
+    --maxw:1180px;
+  }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  .bg-grid{
+    position:fixed;
+    inset:0;
+    background-image:
+      linear-gradient(rgba(56,189,248,0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(56,189,248,0.045) 1px, transparent 1px);
+    background-size:42px 42px;
+    mask-image:radial-gradient(ellipse 90% 60% at 50% 0%, rgba(0,0,0,0.9), transparent 75%);
+    pointer-events:none;
+    z-index:0;
+  }
+  h1,h2,h3,h4{
+    font-family:'Sora',sans-serif;
+    font-weight:700;
+    letter-spacing:-0.01em;
+  }
+  .mono{font-family:'JetBrains Mono',monospace;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+  a{color:inherit;text-decoration:none;}
+  section{position:relative;z-index:1;}
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow-x: hidden;
-            background: var(--light);
-        }
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--accent);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:16px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:7px;height:7px;
+    background:var(--accent);
+    border-radius:50%;
+    box-shadow:0 0 0 4px var(--accent-dim);
+    flex-shrink:0;
+  }
 
-        .navbar {
-            background: rgba(255, 255, 255, 0.95) !important;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:50;
+    background:rgba(6,11,23,0.78);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .nav-inner{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:16px 28px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .logo{
+    font-family:'JetBrains Mono',monospace;
+    font-weight:600;
+    font-size:16px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:var(--text);
+  }
+  .logo .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--accent);
+    box-shadow:0 0 8px var(--accent);
+    animation:pulse-dot 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse-dot{0%,100%{opacity:1;}50%{opacity:0.35;}}
 
-        .navbar-brand {
-            font-weight: 700;
-            font-size: 1.5rem;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+  .nav-links{
+    display:flex;
+    gap:34px;
+    font-size:14px;
+    font-weight:500;
+    color:var(--text-dim);
+  }
+  .nav-links a{
+    position:relative;
+    padding:4px 0;
+    transition:color .2s;
+  }
+  .nav-links a:hover{color:var(--text);}
+  .nav-links a::after{
+    content:'';
+    position:absolute;left:0;bottom:-2px;
+    width:0;height:1px;background:var(--accent);
+    transition:width .25s;
+  }
+  .nav-links a:hover::after{width:100%;}
 
-        .nav-link {
-            color: var(--dark) !important;
-            font-weight: 500;
-            margin: 0 10px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
+  .nav-cta{
+    font-family:'JetBrains Mono',monospace;
+    font-size:13px;
+    padding:9px 18px;
+    border:1px solid var(--accent);
+    color:var(--accent);
+    border-radius:8px;
+    transition:background .2s, color .2s;
+  }
+  .nav-cta:hover{background:var(--accent);color:var(--bg);}
 
-        .nav-link:hover {
-            color: var(--primary) !important;
-            transform: translateY(-2px);
-        }
+  .nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
+  .nav-toggle span{width:22px;height:2px;background:var(--text);display:block;}
 
-       .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    position: relative;
-    overflow: hidden;
-      padding-top: 80px;
-     
-}
+  .mobile-menu{
+    display:none;
+    flex-direction:column;
+    gap:18px;
+    padding:20px 28px 26px;
+    border-top:1px solid var(--line-soft);
+    background:var(--bg-soft);
+  }
+  .mobile-menu a{color:var(--text-dim);font-size:15px;}
+  .mobile-menu.open{display:flex;}
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: moveGrid 20s linear infinite;
-        }
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding:140px 0 80px;
+  }
+  .hero-inner{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:60px;
+    align-items:center;
+    width:100%;
+  }
+  .hero h1{
+    font-size:clamp(40px,6vw,64px);
+    line-height:1.04;
+    margin-bottom:18px;
+  }
+  .hero h1 span{color:var(--accent);}
+  .terminal{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:16px 18px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:13.5px;
+    color:var(--text-dim);
+    margin-bottom:26px;
+    max-width:480px;
+  }
+  .terminal .tline1{color:var(--accent-2);}
+  .terminal .cursor{
+    display:inline-block;
+    width:7px;height:14px;
+    background:var(--accent);
+    margin-left:2px;
+    animation:blink 1s steps(1) infinite;
+    vertical-align:middle;
+  }
+  @keyframes blink{50%{opacity:0;}}
 
-        @keyframes moveGrid {
-            0% {
-                transform: translate(0, 0);
-            }
+  .hero p.lead{
+    color:var(--text-dim);
+    font-size:16.5px;
+    max-width:520px;
+    margin-bottom:34px;
+  }
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{
+    font-family:'JetBrains Mono',monospace;
+    font-size:13.5px;
+    padding:13px 24px;
+    border-radius:8px;
+    transition:all .2s;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .btn-primary{background:var(--accent);color:var(--bg);font-weight:600;}
+  .btn-primary:hover{background:#5BCBFB;transform:translateY(-1px);}
+  .btn-ghost{border:1px solid var(--line);color:var(--text);}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
 
-            100% {
-                transform: translate(50px, 50px);
-            }
-        }
+  /* hero visual: network graph + photo node */
+  .hero-visual{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:420px;
+  }
+  .hero-visual svg{width:100%;height:auto;max-width:440px;overflow:visible;}
+  .net-line{
+    stroke:var(--line);
+    stroke-width:1.4;
+    fill:none;
+  }
+  .net-line.flow{
+    stroke:var(--accent);
+    stroke-width:1.6;
+    stroke-dasharray:6 10;
+    animation:flow 3.2s linear infinite;
+    opacity:0.85;
+  }
+  .net-line.flow.slow{animation-duration:5s;}
+  .net-line.flow.rev{animation-direction:reverse;animation-duration:4s;}
+  @keyframes flow{to{stroke-dashoffset:-160;}}
+  .net-node-bg{fill:var(--panel);stroke:var(--line);stroke-width:1.4;}
+  .net-node-ring{
+    fill:none;stroke:var(--accent);stroke-width:1.4;opacity:0.45;
+    animation:ring 2.6s ease-out infinite;
+    transform-origin:center;
+  }
+  @keyframes ring{0%{opacity:0.5;transform:scale(0.85);}100%{opacity:0;transform:scale(1.35);}}
+  .net-label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:9.5px;
+    fill:var(--text-faint);
+    letter-spacing:0.04em;
+  }
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            color: white;
-        }
+  .photo-frame{
+    position:absolute;
+    top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    width:168px;height:168px;
+    clip-path:polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+    background:linear-gradient(160deg, var(--panel-2), var(--panel));
+    border:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:5;
+    overflow:hidden;
+  }
+  .photo-frame img{width:100%;height:100%;object-fit:cover;display:none;}
+  .photo-frame .initials{
+    font-family:'Sora',sans-serif;
+    font-weight:700;
+    font-size:42px;
+    color:var(--accent);
+    opacity:0.85;
+  }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease;
-        }
+  /* ---------- SECTION HEADERS ---------- */
+  .section-pad{padding:108px 0;}
+  .section-head{margin-bottom:54px;max-width:640px;}
+  .section-head h2{font-size:clamp(28px,3.4vw,38px);margin-bottom:14px;}
+  .section-head p{color:var(--text-dim);font-size:15.5px;}
 
-        .hero .subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            animation: fadeInUp 1s ease 0.2s backwards;
-        }
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.is-visible{opacity:1;transform:translateY(0);}
 
-        .hero p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            opacity: 0.85;
-            animation: fadeInUp 1s ease 0.4s backwards;
-        }
+  /* ---------- ABOUT ---------- */
+  #about{border-top:1px solid var(--line-soft);}
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:50px;
+    align-items:start;
+  }
+  .about-grid p{color:var(--text-dim);margin-bottom:18px;font-size:15.5px;}
+  .about-grid p strong{color:var(--text);font-weight:600;}
+  .fact-card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:26px 28px;
+  }
+  .fact-row{
+    display:flex;
+    justify-content:space-between;
+    padding:13px 0;
+    border-bottom:1px solid var(--line-soft);
+    font-size:14px;
+  }
+  .fact-row:last-child{border-bottom:none;}
+  .fact-row .k{color:var(--text-faint);font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.03em;}
+  .fact-row .v{color:var(--text);font-weight:500;text-align:right;}
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
+  /* ---------- EXPERIENCE TIMELINE ---------- */
+  .timeline{position:relative;padding-left:42px;}
+  .timeline::before{
+    content:'';
+    position:absolute;
+    left:9px;top:6px;bottom:6px;
+    width:2px;
+    background:linear-gradient(to bottom, var(--accent), var(--line) 90%);
+  }
+  .timeline::after{
+    content:'';
+    position:absolute;
+    left:5px;top:0;
+    width:10px;height:10px;
+    border-radius:50%;
+    background:var(--accent);
+    box-shadow:0 0 10px var(--accent);
+    animation:packet-travel 4.5s linear infinite;
+  }
+  @keyframes packet-travel{
+    0%{top:0;opacity:0;}
+    5%{opacity:1;}
+    95%{opacity:1;}
+    100%{top:calc(100% - 10px);opacity:0;}
+  }
+  .tl-item{position:relative;margin-bottom:54px;}
+  .tl-item:last-child{margin-bottom:0;}
+  .tl-node{
+    position:absolute;
+    left:-42px;top:4px;
+    width:20px;height:20px;
+    border-radius:50%;
+    background:var(--bg);
+    border:2px solid var(--accent);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .tl-node::after{content:'';width:7px;height:7px;border-radius:50%;background:var(--accent);}
+  .tl-card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:26px 28px;
+  }
+  .tl-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:6px;
+  }
+  .tl-role{font-size:18px;font-weight:700;font-family:'Sora',sans-serif;}
+  .tl-date{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:var(--accent);
+    white-space:nowrap;
+  }
+  .tl-org{color:var(--text-dim);font-size:14px;margin-bottom:16px;}
+  .tl-card ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .tl-card li{
+    position:relative;
+    padding-left:18px;
+    color:var(--text-dim);
+    font-size:14.5px;
+  }
+  .tl-card li::before{
+    content:'›';
+    position:absolute;left:0;top:0;
+    color:var(--accent);
+    font-weight:700;
+  }
+  .tl-card li strong{color:var(--text);font-weight:600;}
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+  /* ---------- SKILLS ---------- */
+  .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .skill-panel{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:28px 26px;
+    transition:border-color .25s, transform .25s;
+  }
+  .skill-panel:hover{border-color:var(--accent);transform:translateY(-4px);}
+  .skill-panel .tag{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11.5px;
+    color:var(--accent-2);
+    letter-spacing:0.06em;
+    margin-bottom:10px;
+    display:block;
+  }
+  .skill-panel h3{font-size:18px;margin-bottom:18px;}
+  .chip-list{display:flex;flex-wrap:wrap;gap:8px;}
+  .chip{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    padding:6px 12px;
+    border:1px solid var(--line);
+    border-radius:6px;
+    color:var(--text-dim);
+    background:var(--bg-soft);
+  }
 
-        .profile-img {
-            width: 500px;
-            height: 500px;
-            border-radius: 50%;
-            border: 8px solid rgba(255, 255, 255, 0.334);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            object-fit: cover;
-            animation: float 3s ease-in-out infinite;
-        }
+  /* ---------- PROJECT ---------- */
+  .project-card{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+    background:var(--panel);
+  }
+  .project-visual{
+    background:
+      radial-gradient(circle at 30% 20%, var(--accent-dim), transparent 55%),
+      var(--bg-soft);
+    padding:34px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-right:1px solid var(--line);
+  }
+  .mock-window{
+    width:100%;
+    max-width:320px;
+    background:var(--panel-2);
+    border:1px solid var(--line);
+    border-radius:10px;
+    overflow:hidden;
+  }
+  .mock-bar{
+    display:flex;gap:6px;
+    padding:9px 12px;
+    background:var(--bg-soft);
+    border-bottom:1px solid var(--line);
+  }
+  .mock-bar span{width:8px;height:8px;border-radius:50%;background:var(--line);}
+  .mock-body{padding:16px;display:flex;flex-direction:column;gap:9px;}
+  .mock-row{display:flex;gap:8px;align-items:center;}
+  .mock-row .mb{height:9px;border-radius:3px;background:var(--line-soft);}
+  .mock-row .mb.accent{background:var(--accent-dim);}
+  .mock-table{display:flex;flex-direction:column;gap:6px;margin-top:6px;}
+  .mock-tr{display:grid;grid-template-columns:1.4fr 1fr 0.8fr;gap:6px;}
+  .mock-tr .mb{height:7px;border-radius:3px;background:var(--line-soft);}
 
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
-        }
+  .project-content{padding:38px 36px;display:flex;flex-direction:column;}
+  .project-content .tag{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11.5px;
+    color:var(--accent);
+    letter-spacing:0.06em;
+    margin-bottom:12px;
+  }
+  .project-content h3{font-size:25px;margin-bottom:14px;}
+  .project-content p{color:var(--text-dim);font-size:14.5px;margin-bottom:20px;}
+  .project-content .chip-list{margin-bottom:8px;}
 
-        .btn-custom {
-            background: white;
-            color: var(--primary);
-            padding: 12px 35px;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-            margin: 10px;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
+  /* ---------- EDUCATION ---------- */
+  .edu-card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:32px 34px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:18px;
+  }
+  .edu-card h3{font-size:20px;margin-bottom:6px;}
+  .edu-card p{color:var(--text-dim);font-size:14.5px;}
+  .edu-badge{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12.5px;
+    color:var(--accent);
+    border:1px solid var(--accent);
+    padding:8px 16px;
+    border-radius:20px;
+    white-space:nowrap;
+  }
 
-        .btn-custom:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-            color: var(--secondary);
-        }
+  /* ---------- REFERENCES ---------- */
+  .ref-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .ref-card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:26px 28px;
+  }
+  .ref-card h4{font-size:16.5px;margin-bottom:4px;}
+  .ref-card .role{color:var(--accent-2);font-size:13.5px;margin-bottom:2px;}
+  .ref-card .org{color:var(--text-dim);font-size:13.5px;margin-bottom:14px;}
+  .ref-card .note{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11.5px;
+    color:var(--text-faint);
+    border-top:1px solid var(--line-soft);
+    padding-top:12px;
+  }
 
-        .section {
-            padding: 80px 0;
-        }
+  /* ---------- CONTACT ---------- */
+  #contact{
+    background:
+      radial-gradient(circle at 50% 0%, var(--accent-dim-2), transparent 60%),
+      var(--bg-soft);
+    border-top:1px solid var(--line-soft);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .contact-inner{text-align:center;max-width:640px;margin:0 auto;}
+  .contact-inner h2{font-size:clamp(28px,4vw,42px);margin-bottom:16px;}
+  .contact-inner p{color:var(--text-dim);margin-bottom:36px;font-size:16px;}
+  .contact-links{
+    display:flex;
+    justify-content:center;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .contact-pill{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:var(--panel);
+    border:1px solid var(--line);
+    padding:12px 20px;
+    border-radius:9px;
+    font-size:14px;
+    transition:border-color .2s,transform .2s;
+  }
+  .contact-pill:hover{border-color:var(--accent);transform:translateY(-2px);}
+  .contact-pill svg{width:16px;height:16px;stroke:var(--accent);flex-shrink:0;}
 
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 3rem;
-            text-align: center;
-            position: relative;
-            color: var(--dark);
-        }
+  footer{
+    padding:30px 0;
+    text-align:center;
+    color:var(--text-faint);
+    font-family:'JetBrains Mono',monospace;
+    font-size:12.5px;
+  }
 
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            border-radius: 2px;
-        }
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:900px){
+    .nav-links{display:none;}
+    .nav-toggle{display:flex;}
+    .hero-inner{grid-template-columns:1fr;}
+    .hero-visual{min-height:300px;order:-1;}
+    .about-grid{grid-template-columns:1fr;}
+    .skills-grid{grid-template-columns:1fr;}
+    .project-card{grid-template-columns:1fr;}
+    .project-visual{border-right:none;border-bottom:1px solid var(--line);}
+    .ref-grid{grid-template-columns:1fr;}
+    .edu-card{flex-direction:column;align-items:flex-start;}
+  }
+  @media (max-width:560px){
+    .wrap{padding:0 20px;}
+    .section-pad{padding:76px 0;}
+    .hero{padding:120px 0 60px;}
+    .tl-top{flex-direction:column;align-items:flex-start;}
+  }
 
-        .skill-card {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
+  @media (prefers-reduced-motion:reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
 
-        .skill-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-            border-color: var(--primary);
-        }
-
-        .skill-icon {
-            font-size: 3rem;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            margin-bottom: 30px;
-            height: 100%;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-        }
-
-        .project-img {
-            width: 100%;
-            height: 250px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: white;
-        }
-
-        .project-content {
-            padding: 25px;
-        }
-
-        .badge-custom {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            margin: 5px;
-            display: inline-block;
-        }
-
-        .contact-info {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            margin-bottom: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .contact-info:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-        }
-
-        .contact-icon {
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 30px 0;
-            text-align: center;
-        }
-
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            margin: 0 15px;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .social-links a:hover {
-            color: var(--accent);
-            transform: translateY(-3px);
-        }
-
-        .timeline {
-            position: relative;
-            padding: 20px 0;
-        }
-
-        .timeline-item {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-        }
-
-        .timeline-item:hover {
-            transform: translateX(10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-        }
-
-        .timeline-icon {
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .experience-card {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            border-left: 4px solid var(--primary);
-        }
-
-        .experience-card:hover {
-            transform: translateX(10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-        }
-
-        .experience-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .experience-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-        }
-
-        .experience-company {
-            font-size: 1.1rem;
-            color: var(--secondary);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .experience-date {
-            color: var(--gray);
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-        }
-
-        .experience-description {
-            color: #64748b;
-            line-height: 1.6;
-        }
-
-        @media (max-width: 768px) {
-            .profile-img {
-                width: 300px;
-                height: 300px;
-            }
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-        }
-    </style>
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+</style>
 </head>
-
 <body>
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">Dinindu Arachchige</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                </ul>
-            </div>
+
+<div class="bg-grid"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#top" class="logo"><span class="dot"></span>DA_</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#contact" class="nav-cta">Get in touch</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-inner">
+    <div>
+      <div class="eyebrow">Network &amp; Systems Engineer</div>
+      <h1>Dinindu<br><span>Arachchige</span></h1>
+      <div class="terminal">
+        <span class="tline1">guest@portfolio</span>:~$ whoami<br>
+        <span id="typedOut"></span><span class="cursor"></span>
+      </div>
+      <p class="lead">Computer Systems Engineering undergraduate who builds and hardens the infrastructure underneath everyday software — from VLANs and firewalls to the full-stack apps that run on top of them.</p>
+      <div class="btn-row">
+        <a href="#experience" class="btn btn-primary">View experience →</a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <svg viewBox="0 0 420 420" aria-hidden="true">
+        <!-- connecting lines -->
+        <path class="net-line flow" d="M210 70 L100 150" />
+        <path class="net-line flow rev" d="M210 70 L320 150" />
+        <path class="net-line flow slow" d="M100 150 L100 270" />
+        <path class="net-line flow" d="M320 150 L320 270" />
+        <path class="net-line flow rev" d="M100 270 L210 340" />
+        <path class="net-line flow slow" d="M320 270 L210 340" />
+        <path class="net-line" d="M100 150 L320 150" />
+        <path class="net-line" d="M100 270 L320 270" />
+
+        <!-- node: firewall (top) -->
+        <g transform="translate(210,70)">
+          <circle class="net-node-ring" r="20"/>
+          <circle class="net-node-bg" r="15"/>
+          <text class="net-label" text-anchor="middle" y="34">FIREWALL</text>
+        </g>
+        <!-- node: switch left -->
+        <g transform="translate(100,150)">
+          <circle class="net-node-bg" r="12"/>
+          <text class="net-label" text-anchor="middle" y="-20">SWITCH</text>
+        </g>
+        <!-- node: switch right -->
+        <g transform="translate(320,150)">
+          <circle class="net-node-bg" r="12"/>
+          <text class="net-label" text-anchor="middle" y="-20">SWITCH</text>
+        </g>
+        <!-- node: server left -->
+        <g transform="translate(100,270)">
+          <circle class="net-node-bg" r="12"/>
+          <text class="net-label" text-anchor="middle" y="32">SERVER</text>
+        </g>
+        <!-- node: server right -->
+        <g transform="translate(320,270)">
+          <circle class="net-node-bg" r="12"/>
+          <text class="net-label" text-anchor="middle" y="32">VM HOST</text>
+        </g>
+        <!-- node: client bottom (photo) -->
+        <g transform="translate(210,340)">
+          <circle class="net-node-ring" r="22"/>
+        </g>
+      </svg>
+      <div class="col-lg-5 text-center">
+    <img src="./Content/profile.jpg" alt="Dinindu Arachchige" class="profile-img">
+</div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section id="about" class="section-pad">
+    <div class="wrap">
+      <div class="about-grid reveal">
+        <div>
+          <div class="eyebrow">About</div>
+          <h2 style="margin-bottom:22px;">Grounded in infrastructure, comfortable across the stack.</h2>
+          <p>I'm currently an <strong>Intern at the Sri Lanka Bureau of Foreign Employment (SLBFE)</strong>, where I started in network engineering — configuring firewalls, switches and virtualized environments — before moving into a full-stack development role building internal tools.</p>
+          <p>That path is intentional. Understanding how traffic actually moves through a VLAN, or how a firewall rule gets enforced, makes me a better software engineer; and writing the applications that sit on top of that infrastructure makes me a better network engineer. I'm a <strong>BSc Engineering (Hons) Computer Systems Engineering</strong> undergraduate, and I'm most interested in roles that let me keep working at that intersection.</p>
         </div>
-    </nav>
-
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-7 hero-content">
-                    <h1>Hi, I'm Dinindu Arachchige</h1>
-                    <p class="subtitle">Undergraduate Engineering Student & Tech Enthusiast</p>
-                    <p>"Passionate about Networking & Cybersecurity, Embedded Systems, Electronic and Telecommunication System Engineering."</p>
-                    <div>
-                        <a href="#projects" class="btn-custom">
-                            <i class="fas fa-rocket"></i> View My Work
-                        </a>
-                        <a href="#contact" class="btn-custom">Get In Touch</a>
-                    </div>
-                    <div class="social-links mt-4">
-                        <a href="https://linkedin.com/in/dinindu-arachchige-3b84902a8" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://github.com/Dinindu03" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://www.instagram.com/dinu_arachchige_?igsh=aGNlZWM4Z3FjNHUy&utm_source=qr"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-5 text-center">
-                    <img src="https://github.com/Dinindu03/DininduArachchige/blob/main/Content/WhatsApp%20Image%202025-11-18%20at%2014.23.35_d0a16468.jpg?raw=true" alt="Dinindu Arachchige" class="profile-img">
-                </div>
-            </div>
+        <div class="fact-card">
+          <div class="fact-row"><span class="k">STATUS</span><span class="v">Undergraduate · Intern</span></div>
+          <div class="fact-row"><span class="k">FOCUS</span><span class="v">Networking + Full-Stack</span></div>
+          <div class="fact-row"><span class="k">CURRENT ROLE</span><span class="v">SLBFE — Software Eng.</span></div>
+          <div class="fact-row"><span class="k">BASED IN</span><span class="v">Sri Lanka</span></div>
+          <div class="fact-row"><span class="k">OPEN TO</span><span class="v">Internships · Grad Roles</span></div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <section id="about" class="section bg-light">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="row">
-                <div class="col-lg-8 mx-auto text-center">
-                    <p class="lead mb-4">I am a motivated and dedicated undergraduate in Computer Systems Engineering with a strong passion for Networking, Electronic and Telecommunication , Embedded Systems, and System Engineering. My passion lies in creating efficient, scalable systems that solve real-world problems.</p>
-                    <p>I continuously strive to expand my technical knowledge and practical skills through academic projects and personal learning. Known for being honest, hardworking, and adaptable, I am committed to excellence in everything I undertake. I enjoy problem-solving, collaborating with teams, and learning new technologies that contribute to innovative solutions. With a growth mindset and a keen eye for detail, I am eager to contribute effectively to any technical or research-oriented environment I become part of.</p>
-                </div>
+  <section id="experience" class="section-pad" style="border-top:1px solid var(--line-soft);">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Experience</div>
+        <h2>A path through ports, perimeters, and production code.</h2>
+        <p>Three internships, in chronological order — each one handing off skills to the next.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="tl-item reveal">
+          <div class="tl-node"></div>
+          <div class="tl-card">
+            <div class="tl-top">
+              <span class="tl-role">Intern – System Engineer</span>
+              <span class="tl-date">2025 · 1 MONTH</span>
             </div>
-            <div class="row mt-5">
-                <div class="col-md-6 mx-auto">
-                    <div class="timeline-item">
-                        <i class="fas fa-graduation-cap timeline-icon"></i>
-                        <h4>Education</h4>
-                        
-                        <h5>Bachelor of Science  Engineering (Honours) in Computer Systems Engineering</h5>
-                        <p class="text-muted mb-2">Faculty of Engineering / Dept. of Electrical, Electronic & Systems Engineering</p>
-                        <p class="text-muted">NSBM Green University</p>
-                    </div>
-                </div>
-            </div>
+            <div class="tl-org">Sri Lanka Ports Authority (SLPA)</div>
+            <ul>
+              <li><strong>Infrastructure support:</strong> Assisted with maintenance and troubleshooting for large-scale maritime IT systems where uptime is non-negotiable.</li>
+              <li><strong>System reliability:</strong> Got hands-on exposure to high-stakes operational IT and learned how engineering decisions hold up under real operational pressure.</li>
+            </ul>
+          </div>
         </div>
-    </section>
 
-    <section id="experience" class="section">
-        <div class="container">
-            <h2 class="section-title">Experience</h2>
-            <div class="row">
-                <div class="col-lg-10 mx-auto">
-                    <div class="experience-card">
-                        <i class="fas fa-briefcase experience-icon"></i>
-                        <h3 class="experience-title">Network & cybersecurity Engineer - Intern</h3>
-                        <p class="experience-company">Sri Lanka Bureau of Foreign Employment (SLBFE)</p>
-                        <p class="experience-date">September 2025 - January 2026</p>
-                        <p class="experience-description">
-                            Assisted in designing and implementing network infrastructure for enterprise clients. Configured routers, switches, and firewalls. Performed network troubleshooting and optimization. Worked with Cisco equipment and gained hands-on experience with VLANs, routing protocols, and network security implementations.
-                        </p>
-                    </div>
-
-                    <div class="experience-card">
-                        <i class="fas fa-code experience-icon"></i>
-                        <h3 class="experience-title">Software Engineer - Intern</h3>
-                        <p class="experience-company">Sri Lanka Bureau of Foreign Employment (SLBFE) </p>
-                        <p class="experience-date">January 2026 - March 2026</p>
-                        <p class="experience-description">
-                           Developed TeaStack, a robust ASP.NET MVC and C# solution designed to modernize legacy tea production workflows. By migrating from a VB6 environment to an MSSQL and jQuery-based architecture, the system optimizes real-time harvest tracking and inventory management, significantly enhancing operational transparency and data accuracy across the production lifecycle.
-                    </div>
-                    <div class="experience-card">
-                        <i class="fas fa-laptop-code experience-icon"></i>
-                        <h3 class="experience-title">System Engineer - Intern</h3>
-                        <p class="experience-company">Sri Lanka Ports Authority (SLPA)</p>
-
-                        <p class="experience-date">August 2025 - September 2025</p>
-                        <p class="experience-description">
-                           Demonstrated rapid technical adaptability in a high-stakes environment, supporting the troubleshooting and optimization of large-scale server systems and network operations. Committed to ensuring high availability and system reliability in mission-critical industrial settings.
-                        </p>
-                    </div>
-                   
-                </div>
+        <div class="tl-item reveal">
+          <div class="tl-node"></div>
+          <div class="tl-card">
+            <div class="tl-top">
+              <span class="tl-role">Intern – Network Engineer</span>
+              <span class="tl-date">SEP 2025 – JAN 2026</span>
             </div>
+            <div class="tl-org">Sri Lanka Bureau of Foreign Employment (SLBFE)</div>
+            <ul>
+              <li><strong>Network security:</strong> Engineered pfSense firewalls with Access Control Lists and Intrusion Detection Systems to harden the organization's perimeter.</li>
+              <li><strong>Network performance:</strong> Configured Netgear M4300 managed switches with VLAN tagging and Link Aggregation (LACP) to cut latency and segment traffic.</li>
+              <li><strong>Virtualization:</strong> Deployed and managed virtualized environments on Proxmox VE for resource allocation and configuration testing.</li>
+              <li><strong>Maintenance:</strong> Worked alongside senior engineers on routing troubleshooting and uptime monitoring.</li>
+            </ul>
+          </div>
         </div>
-    </section>
 
-    <section id="skills" class="section bg-light">
-        <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="skill-card">
-                        <i class="fas fa-network-wired skill-icon"></i>
-                        <h4>Networking & Cybersecurity</h4>
-                        <p>TCP/IP, Network Protocols, Cisco Configuration, Network Security, Firewalls, VPN</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="skill-card">
-                        <i class="fas fa-microchip skill-icon"></i>
-                        <h4>Embedded Systems</h4>
-                        <p>Arduino, ESP32, Raspberry Pi, STM32, Microcontroller Programming, IoT Integration</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="skill-card">
-                        <i class="fas fa-chart-line skill-icon"></i>
-                        <h4>Data Science</h4>
-                        <p>Python, Data Analysis, Machine Learning, Statistical Modeling, Data Visualization</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="skill-card">
-                        <i class="fas fa-code skill-icon"></i>
-                        <h4>Programming</h4>
-                        <p>Java, Python, C/C++, JavaScript, SQL, HTML/CSS</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="skill-card">
-                        <i class="fas fa-database skill-icon"></i>
-                        <h4>Database Management</h4>
-                        <p>MySQL, Database Design, SQL Queries, Data Modeling</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="skill-card">
-                        <i class="fas fa-tools skill-icon"></i>
-                        <h4>Tools & Platforms</h4>
-                        <p>Git, Linux, Proteus, MATLAB, VS Code, Cisco Packet Tracer</p>
-                    </div>
-                </div>
+        <div class="tl-item reveal">
+          <div class="tl-node"></div>
+          <div class="tl-card">
+            <div class="tl-top">
+              <span class="tl-role">Intern – Full-Stack Software Engineer</span>
+              <span class="tl-date">JAN 2026 – MAR 2026</span>
             </div>
+            <div class="tl-org">Sri Lanka Bureau of Foreign Employment (SLBFE)</div>
+            <ul>
+              <li><strong>System architecture:</strong> Designed and built <strong>TeaStack</strong> end-to-end — a web-based inventory and distribution system for internal bureau logistics.</li>
+              <li><strong>Backend:</strong> Implemented business logic and secure data handling in C# .NET on ASP.NET MVC.</li>
+              <li><strong>Database:</strong> Modeled relational schemas and queries in SQL Server to keep inventory data consistent.</li>
+              <li><strong>Frontend:</strong> Built a responsive Bootstrap 5 interface focused on everyday usability.</li>
+            </ul>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <section id="projects" class="section">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="project-card">
-                        <div class="project-img">
-                            <i class="fas fa-parking"></i>
-                        </div>
-                        <div class="project-content">
-                            <h4>Smart Car Parking System</h4>
-                            <p>IoT-based car parking automation system using ESP32 and website integration for controlling parking slots.</p>
-                            <span class="badge-custom">#IoT</span>
-                            <span class="badge-custom">#ESP32</span>
-                            <span class="badge-custom">#Simulation</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="project-card">
-                        <div class="project-img">
-                            <i class="fas fa-bolt"></i>
-                        </div>
-                        <div class="project-content">
-                            <h4>Regulated Power Supply</h4>
-                            <p>Designed, simulated, and built a two-way regulated power supply converting 240V AC to stable 5V and 3.5V DC outputs using Zener diodes.</p>
-                            <span class="badge-custom">#CircuitDesign</span>
-                            <span class="badge-custom">#ZenerDiode</span>
-                            <span class="badge-custom">#PCB</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="project-card">
-                        <div class="project-img">
-                            <i class="fas fa-desktop"></i>
-                        </div>
-                        <div class="project-content">
-                            <h4>Digital Health Record System</h4>
-                            <p>Designed and implemented a health record system using Java Swing and MySQL to securely manage patient information across medical centers.</p>
-                            <span class="badge-custom">#MySQL</span>
-                            <span class="badge-custom">#Java</span>
-                            <span class="badge-custom">#Database</span>
-                        </div>
-                    </div>
-                </div>
+  <section id="skills" class="section-pad" style="border-top:1px solid var(--line-soft);">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Skills</div>
+        <h2>Two stacks, one engineer.</h2>
+        <p>The tools I reach for, grouped by where they live in a system.</p>
+      </div>
+      <div class="skills-grid reveal">
+        <div class="skill-panel">
+          <span class="tag">// LAYER 1</span>
+          <h3>Networking &amp; Security</h3>
+          <div class="chip-list">
+            <span class="chip">pfSense (Bare-Metal)</span>
+            <span class="chip">VLAN Tagging</span>
+            <span class="chip">Network Segmentation</span>
+            <span class="chip">Netgear M4300</span>
+            <span class="chip">Cisco Switch CLI</span>
+            <span class="chip">ACL / IDS</span>
+          </div>
+        </div>
+        <div class="skill-panel">
+          <span class="tag">// LAYER 2</span>
+          <h3>Full-Stack Development</h3>
+          <div class="chip-list">
+            <span class="chip">C# .NET</span>
+            <span class="chip">ASP.NET MVC</span>
+            <span class="chip">SQL Server</span>
+            <span class="chip">Bootstrap 5</span>
+            <span class="chip">HTML5</span>
+            <span class="chip">CSS3</span>
+          </div>
+        </div>
+        <div class="skill-panel">
+          <span class="tag">// LAYER 3</span>
+          <h3>Virtualization &amp; Tools</h3>
+          <div class="chip-list">
+            <span class="chip">Proxmox VE</span>
+            <span class="chip">Git</span>
+            <span class="chip">Relational DB Design</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="section-pad" style="border-top:1px solid var(--line-soft);">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Featured Project</div>
+        <h2>TeaStack</h2>
+        <p>A full-stack system built for a real internal need, start to finish.</p>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-visual">
+          <div class="mock-window">
+            <div class="mock-bar"><span></span><span></span><span></span></div>
+            <div class="mock-body">
+              <div class="mock-row"><div class="mb accent" style="width:70px;"></div><div class="mb" style="width:40px;"></div></div>
+              <div class="mock-row"><div class="mb" style="width:120px;"></div></div>
+              <div class="mock-table">
+                <div class="mock-tr"><div class="mb"></div><div class="mb"></div><div class="mb accent"></div></div>
+                <div class="mock-tr"><div class="mb"></div><div class="mb"></div><div class="mb"></div></div>
+                <div class="mock-tr"><div class="mb"></div><div class="mb"></div><div class="mb accent"></div></div>
+                <div class="mock-tr"><div class="mb"></div><div class="mb"></div><div class="mb"></div></div>
+              </div>
             </div>
+          </div>
         </div>
-    </section>
-
-    <section id="contact" class="section bg-light">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="contact-info text-center">
-                        <i class="fas fa-envelope contact-icon"></i>
-                        <h5>Email</h5>
-                        <p>kadvishwaja@students.nsbm.ac.lk</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="contact-info text-center">
-                        <i class="fas fa-phone contact-icon"></i>
-                        <h5>Phone</h5>
-                        <p>+94 71 6177032</p>
-                        <p>+94 78 1628770</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="contact-info text-center">
-                        <i class="fas fa-map-marker-alt contact-icon"></i>
-                        <h5>Location</h5>
-                        <p>"Prashakthi", Abaduwa, Goluwamulla, Ganegoda</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-5">
-                <div class="col-lg-6 mx-auto text-center">
-                    <h4 class="mb-4">Let's Connect!</h4>
-                    <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
-                    <div class="social-links mt-4">
-                        <a href="https://linkedin.com/in/dinindu-arachchige-3b84902a8" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://github.com/Dinindu03" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
+        <div class="project-content">
+          <span class="tag">// INVENTORY &amp; DISTRIBUTION</span>
+          <h3>Internal logistics, made trackable.</h3>
+          <p>TeaStack is a web-based inventory and distribution management system designed to optimize internal logistics at SLBFE. I owned it end to end — from database schema to the interface staff use day-to-day — implementing the business logic, data integrity rules, and a responsive UI on top of a relational SQL Server backend.</p>
+          <div class="chip-list">
+            <span class="chip">C# .NET</span>
+            <span class="chip">ASP.NET MVC</span>
+            <span class="chip">SQL Server</span>
+            <span class="chip">Bootstrap 5</span>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Eng. Dinindu Arachchige. All Rights Reserved.</p>
+  <section id="education" class="section-pad" style="border-top:1px solid var(--line-soft);">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Education</div>
+        <h2>Currently studying</h2>
+      </div>
+      <div class="edu-card reveal">
+        <div>
+          <h3>BSc Engineering (Hons), Computer Systems Engineering</h3>
+          <p>Coursework spanning networking, systems architecture, and software engineering.</p>
         </div>
-    </footer>
+        <span class="edu-badge">2023 — Present</span>
+      </div>
+    </div>
+  </section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
+  <section id="references" class="section-pad" style="border-top:1px solid var(--line-soft);">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">References</div>
+        <h2>People who've worked with me</h2>
+        <p>Full contact details available on request — happy to make the introduction.</p>
+      </div>
+      <div class="ref-grid reveal">
+        <div class="ref-card">
+          <h4>Uditha Jayasri</h4>
+          <div class="role">Senior Network Engineer</div>
+          <div class="org">Sri Lanka Bureau of Foreign Employment (SLBFE)</div>
+          <div class="note">Direct supervisor — network engineering internship</div>
+        </div>
+        <div class="ref-card">
+          <h4>Eng. Prabhath Buddhika</h4>
+          <div class="role">HOD &amp; Senior Lecturer</div>
+          <div class="org">Dept. of Electrical, Electronic &amp; Systems Engineering</div>
+          <div class="note">Academic reference</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        // Navbar scroll effect
-        window.addEventListener('scroll', function () {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.15)';
-            } else {
-                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
-            }
-        });
+  <section id="contact" class="section-pad">
+    <div class="wrap contact-inner reveal">
+      <div class="eyebrow" style="justify-content:center;">Contact</div>
+      <h2>Let's connect.</h2>
+      <p>Open to internships and graduate opportunities in networking, infrastructure, or full-stack development.</p>
+      <div class="contact-links">
+        <a class="contact-pill" href="mailto:dininduarachchige03@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg>
+          dininduarachchige03@gmail.com
+        </a>
+        <a class="contact-pill" href="tel:+94716177032">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
+          +94 71 617 7032
+        </a>
+        <a class="contact-pill" href="https://www.linkedin.com/in/dinindu-arachchige-3b84902a8/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/><path d="M10 9h4v12h-4z"/><path d="M14 13a4 4 0 0 1 8 0v8h-4v-8a2 2 0 0 0-4 0"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </section>
 
-        // Animate elements on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
+</main>
 
-        const observer = new IntersectionObserver(function (entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
+<footer>
+  <div class="wrap">© 2026 Dinindu Arachchige — built with HTML, CSS &amp; JS</div>
+</footer>
 
-        document.querySelectorAll('.skill-card, .project-card, .timeline-item, .contact-info, .experience-card').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'all 0.6s ease';
-            observer.observe(el);
-        });
+<script>
+  // mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  navToggle.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
 
-        // Add active state to nav links
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-link');
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
 
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= (sectionTop - 200)) {
-                    current = section.getAttribute('id');
-                }
-            });
+  // terminal typing effect
+  const typedOut = document.getElementById('typedOut');
+  const line = "Computer Systems Engineering Undergraduate";
+  let i = 0;
+  function typeChar(){
+    if (i <= line.length){
+      typedOut.textContent = line.slice(0, i);
+      i++;
+      setTimeout(typeChar, 38);
+    }
+  }
+  setTimeout(typeChar, 500);
 
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').slice(1) === current) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
+  // photo fallback: if no image loads, keep initials visible
+  const img = document.getElementById('profileImg');
+  const fallback = document.getElementById('initialsFallback');
+  img.addEventListener('load', () => { img.style.display = 'block'; fallback.style.display = 'none'; });
+  img.addEventListener('error', () => { img.style.display = 'none'; fallback.style.display = 'block'; });
+</script>
+
 </body>
-
 </html>
