@@ -584,6 +584,30 @@
 
   :focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
 </style>
+  <style>
+.hero-visual{
+    position:relative;
+    width:420px;
+    height:420px;
+}
+
+.hero-visual svg{
+    width:100%;
+    height:100%;
+}
+
+.profile-node-img{
+    position:absolute;
+    left:210px;
+    top:340px;
+    width:44px;
+    height:44px;
+    transform:translate(-50%, -50%);
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid #fff;
+}
+</style>
 </head>
 <body>
 
@@ -630,53 +654,51 @@
     </div>
 
     <div class="hero-visual">
-      <svg viewBox="0 0 420 420" aria-hidden="true">
-        <!-- connecting lines -->
-        <path class="net-line flow" d="M210 70 L100 150" />
-        <path class="net-line flow rev" d="M210 70 L320 150" />
-        <path class="net-line flow slow" d="M100 150 L100 270" />
-        <path class="net-line flow" d="M320 150 L320 270" />
-        <path class="net-line flow rev" d="M100 270 L210 340" />
-        <path class="net-line flow slow" d="M320 270 L210 340" />
-        <path class="net-line" d="M100 150 L320 150" />
-        <path class="net-line" d="M100 270 L320 270" />
+  <svg viewBox="0 0 420 420" aria-hidden="true">
+    <!-- connecting lines -->
+    <path class="net-line flow" d="M210 70 L100 150" />
+    <path class="net-line flow rev" d="M210 70 L320 150" />
+    <path class="net-line flow slow" d="M100 150 L100 270" />
+    <path class="net-line flow" d="M320 150 L320 270" />
+    <path class="net-line flow rev" d="M100 270 L210 340" />
+    <path class="net-line flow slow" d="M320 270 L210 340" />
+    <path class="net-line" d="M100 150 L320 150" />
+    <path class="net-line" d="M100 270 L320 270" />
 
-        <!-- node: firewall (top) -->
-        <g transform="translate(210,70)">
-          <circle class="net-node-ring" r="20"/>
-          <circle class="net-node-bg" r="15"/>
-          <text class="net-label" text-anchor="middle" y="34">FIREWALL</text>
-        </g>
-        <!-- node: switch left -->
-        <g transform="translate(100,150)">
-          <circle class="net-node-bg" r="12"/>
-          <text class="net-label" text-anchor="middle" y="-20">SWITCH</text>
-        </g>
-        <!-- node: switch right -->
-        <g transform="translate(320,150)">
-          <circle class="net-node-bg" r="12"/>
-          <text class="net-label" text-anchor="middle" y="-20">SWITCH</text>
-        </g>
-        <!-- node: server left -->
-        <g transform="translate(100,270)">
-          <circle class="net-node-bg" r="12"/>
-          <text class="net-label" text-anchor="middle" y="32">SERVER</text>
-        </g>
-        <!-- node: server right -->
-        <g transform="translate(320,270)">
-          <circle class="net-node-bg" r="12"/>
-          <text class="net-label" text-anchor="middle" y="32">VM HOST</text>
-        </g>
-        <!-- node: client bottom (photo) -->
-        <g transform="translate(210,340)">
-          <circle class="net-node-ring" r="22"/>
-        </g>
-      </svg>
-      <div class="col-lg-5 text-center">
-    <img src="./Content/profileimage.jpg" alt="Dinindu Arachchige" class="profile-img">
+    <!-- firewall -->
+    <g transform="translate(210,70)">
+      <circle class="net-node-ring" r="20"/>
+      <circle class="net-node-bg" r="15"/>
+      <text class="net-label" text-anchor="middle" y="34">FIREWALL</text>
+    </g>
+
+    <!-- switches -->
+    <g transform="translate(100,150)">
+      <circle class="net-node-bg" r="12"/>
+      <text class="net-label" text-anchor="middle" y="-20">SWITCH</text>
+    </g>
+
+    <g transform="translate(320,150)">
+      <circle class="net-node-bg" r="12"/>
+      <text class="net-label" text-anchor="middle" y="-20">SWITCH</text>
+    </g>
+
+    <!-- servers -->
+    <g transform="translate(100,270)">
+      <circle class="net-node-bg" r="12"/>
+      <text class="net-label" text-anchor="middle" y="32">SERVER</text>
+    </g>
+
+    <g transform="translate(320,270)">
+      <circle class="net-node-bg" r="12"/>
+      <text class="net-label" text-anchor="middle" y="32">VM HOST</text>
+    </g>
+  </svg>
+
+  <img src="./Content/profileimage.jpg" alt="Dinindu Arachchige" class="profile-node-img">
 </div>
-    </div>
-  </div>
+
+
 </header>
 
 <main>
