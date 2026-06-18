@@ -584,30 +584,6 @@
 
   :focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
 </style>
-  <style>
-.hero-visual{
-    position:relative;
-    width:420px;
-    height:420px;
-}
-
-.hero-visual svg{
-    width:100%;
-    height:100%;
-}
-
-.profile-node-img{
-    position:absolute;
-    left:210px;
-    top:340px;
-    width:44px;
-    height:44px;
-    transform:translate(-50%, -50%);
-    border-radius:50%;
-    object-fit:cover;
-    border:3px solid #fff;
-}
-</style>
 </head>
 <body>
 
@@ -646,7 +622,7 @@
         <span class="tline1">guest@portfolio</span>:~$ whoami<br>
         <span id="typedOut"></span><span class="cursor"></span>
       </div>
-      <p class="lead">Computer Systems Engineering undergraduate who builds and hardens the infrastructure underneath everyday software — from VLANs and firewalls to the full-stack apps that run on top of them.</p>
+      <p class="lead">I am a motivated and dedicated undergraduate in Computer Systems Engineering with a strong passion for Networking, Cybersecurity , Telecommunications , Embedded Systems, and System Engineering. I continuously strive to expand my technical knowledge and practical skills through academic projects and personal learning. Known for being honest, hardworking, and adaptable, I am committed to excellence in everything I undertake. I enjoy problem-solving, collaborating with teams, and learning new technologies that contribute to innovative solutions.</p>
       <div class="btn-row">
         <a href="#experience" class="btn btn-primary">View experience →</a>
         <a href="#contact" class="btn btn-ghost">Get in touch</a>
@@ -654,51 +630,54 @@
     </div>
 
     <div class="hero-visual">
-  <svg viewBox="0 0 420 420" aria-hidden="true">
-    <!-- connecting lines -->
-    <path class="net-line flow" d="M210 70 L100 150" />
-    <path class="net-line flow rev" d="M210 70 L320 150" />
-    <path class="net-line flow slow" d="M100 150 L100 270" />
-    <path class="net-line flow" d="M320 150 L320 270" />
-    <path class="net-line flow rev" d="M100 270 L210 340" />
-    <path class="net-line flow slow" d="M320 270 L210 340" />
-    <path class="net-line" d="M100 150 L320 150" />
-    <path class="net-line" d="M100 270 L320 270" />
+      <svg viewBox="0 0 420 420" aria-hidden="true">
+        <!-- connecting lines -->
+        <path class="net-line flow" d="M210 70 L100 150" />
+        <path class="net-line flow rev" d="M210 70 L320 150" />
+        <path class="net-line flow slow" d="M100 150 L100 270" />
+        <path class="net-line flow" d="M320 150 L320 270" />
+        <path class="net-line flow rev" d="M100 270 L210 340" />
+        <path class="net-line flow slow" d="M320 270 L210 340" />
+        <path class="net-line" d="M100 150 L320 150" />
+        <path class="net-line" d="M100 270 L320 270" />
 
-    <!-- firewall -->
-    <g transform="translate(210,70)">
-      <circle class="net-node-ring" r="20"/>
-      <circle class="net-node-bg" r="15"/>
-      <text class="net-label" text-anchor="middle" y="34">FIREWALL</text>
-    </g>
-
-    <!-- switches -->
-    <g transform="translate(100,150)">
-      <circle class="net-node-bg" r="12"/>
-      <text class="net-label" text-anchor="middle" y="-20">SWITCH</text>
-    </g>
-
-    <g transform="translate(320,150)">
-      <circle class="net-node-bg" r="12"/>
-      <text class="net-label" text-anchor="middle" y="-20">SWITCH</text>
-    </g>
-
-    <!-- servers -->
-    <g transform="translate(100,270)">
-      <circle class="net-node-bg" r="12"/>
-      <text class="net-label" text-anchor="middle" y="32">SERVER</text>
-    </g>
-
-    <g transform="translate(320,270)">
-      <circle class="net-node-bg" r="12"/>
-      <text class="net-label" text-anchor="middle" y="32">VM HOST</text>
-    </g>
-  </svg>
-
-  <img src="./Content/profileimage.jpg" alt="Dinindu Arachchige" class="profile-node-img">
-</div>
-
-
+        <!-- node: firewall (top) -->
+        <g transform="translate(210,70)">
+          <circle class="net-node-ring" r="20"/>
+          <circle class="net-node-bg" r="15"/>
+          <text class="net-label" text-anchor="middle" y="34">FIREWALL</text>
+        </g>
+        <!-- node: switch left -->
+        <g transform="translate(100,150)">
+          <circle class="net-node-bg" r="12"/>
+          <text class="net-label" text-anchor="middle" y="-20">SWITCH</text>
+        </g>
+        <!-- node: switch right -->
+        <g transform="translate(320,150)">
+          <circle class="net-node-bg" r="12"/>
+          <text class="net-label" text-anchor="middle" y="-20">SWITCH</text>
+        </g>
+        <!-- node: server left -->
+        <g transform="translate(100,270)">
+          <circle class="net-node-bg" r="12"/>
+          <text class="net-label" text-anchor="middle" y="32">SERVER</text>
+        </g>
+        <!-- node: server right -->
+        <g transform="translate(320,270)">
+          <circle class="net-node-bg" r="12"/>
+          <text class="net-label" text-anchor="middle" y="32">VM HOST</text>
+        </g>
+        <!-- node: client bottom (photo) -->
+        <g transform="translate(210,340)">
+          <circle class="net-node-ring" r="22"/>
+        </g>
+      </svg>
+      <div class="photo-frame">
+        <img id="profileImg" src="./Content/profileimage.png" alt="Dinindu Arachchige" />
+        <span class="initials" id="initialsFallback">DA</span>
+      </div>
+    </div>
+  </div>
 </header>
 
 <main>
@@ -709,12 +688,12 @@
         <div>
           <div class="eyebrow">About</div>
           <h2 style="margin-bottom:22px;">Grounded in infrastructure, comfortable across the stack.</h2>
-          <p>I'm currently an <strong>Intern at the Sri Lanka Bureau of Foreign Employment (SLBFE)</strong>, where I started in network engineering — configuring firewalls, switches and virtualized environments — before moving into a full-stack development role building internal tools.</p>
-          <p>That path is intentional. Understanding how traffic actually moves through a VLAN, or how a firewall rule gets enforced, makes me a better software engineer; and writing the applications that sit on top of that infrastructure makes me a better network engineer. I'm a <strong>BSc Engineering (Hons) Computer Systems Engineering</strong> undergraduate, and I'm most interested in roles that let me keep working at that intersection.</p>
+          <p> <strong>I am a driven Computer Systems Engineering undergraduate who thrives at the intersection of robust hardware infrastructure and agile software deployment. My engineering philosophy is built on a simple premise: build systems that are secure by design, scalable by nature, and impactful by execution.</p>
+          <p>I believe the best engineering happens in environments built on collaboration. Having worked closely with senior mentors and dedicated IT teams, I view a workplace not just as a department, but as a professional family where mutual growth, strong communication, and collective problem-solving thrive.</p>
         </div>
         <div class="fact-card">
-          <div class="fact-row"><span class="k">STATUS</span><span class="v">Undergraduate · Intern</span></div>
-          <div class="fact-row"><span class="k">FOCUS</span><span class="v">Networking + Full-Stack</span></div>
+          <div class="fact-row"><span class="k">STATUS</span><span class="v">Undergraduate</span></div>
+          <div class="fact-row"><span class="k">FOCUS</span><span class="v">Networking + Full-Stack </span></div>
           <div class="fact-row"><span class="k">CURRENT ROLE</span><span class="v">SLBFE — Software Eng.</span></div>
           <div class="fact-row"><span class="k">BASED IN</span><span class="v">Sri Lanka</span></div>
           <div class="fact-row"><span class="k">OPEN TO</span><span class="v">Internships · Grad Roles</span></div>
